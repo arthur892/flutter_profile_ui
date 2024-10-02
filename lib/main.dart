@@ -236,68 +236,51 @@ class _ProfileState extends State<Profile> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                        child: Column(
-                      children: [
-                        Text(
-                          'Battles',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          "$counter",
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        )
-                      ],
-                    )),
-                    Container(
-                      child: Column(children: [
-                        Text(
-                          'Birthday',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          'April 7th',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        )
-                      ]),
+                    InfoBoxItem(
+                      title: 'Battles',
+                      text: '$counter',
                     ),
-                    Container(
-                        child: Column(
-                      children: [
-                        Text(
-                          'Age',
-                          style: TextStyle(
-                              color: Colors.grey[400], fontSize: 14.0),
-                        ),
-                        SizedBox(
-                          height: 5.0,
-                        ),
-                        Text(
-                          '19 yrs',
-                          style: TextStyle(
-                            fontSize: 15.0,
-                          ),
-                        )
-                      ],
-                    )),
+                    InfoBoxItem(title: "Birthday", text: "April 7th"),
+                    InfoBoxItem(title: "Age", text: "19 yrs")
                   ],
                 ),
               )))
         ],
       ),
     );
+  }
+}
+
+class InfoBoxItem extends StatelessWidget {
+  const InfoBoxItem({
+    super.key,
+    required this.title,
+    required this.text,
+  });
+
+  final String title;
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        child: Column(
+      children: [
+        Text(
+          title,
+          style: TextStyle(color: Colors.grey[400], fontSize: 14.0),
+        ),
+        SizedBox(
+          height: 5.0,
+        ),
+        Text(
+          text,
+          style: TextStyle(
+            fontSize: 15.0,
+          ),
+        )
+      ],
+    ));
   }
 }
 
